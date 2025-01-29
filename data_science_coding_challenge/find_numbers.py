@@ -42,6 +42,10 @@ def find_two_numbers_product(numbers, target):
     seen = set()
     products = []
 
+    # add condition for empty list
+    if len(numbers) < 2:
+        return products, pairs
+
     for num in numbers:
         diff = target - num
 
@@ -83,7 +87,15 @@ def find_three_numbers_product(numbers, target):
     triplets = []
     triplet_products = []
 
+    # add condition for empty list
+    n = len(numbers)
+    if n < 3:
+        return triplet_products, triplets
+
     for i, num in enumerate(numbers):
+        if i > n - 3:
+            continue
+
         diff = target - num
         _, pairs = find_two_numbers_product(numbers[i + 1 :], diff)
 
